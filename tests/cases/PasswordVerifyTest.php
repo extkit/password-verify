@@ -7,16 +7,17 @@ use ExtKit\PasswordVerify\Exceptions\ShortTextException;
 use ExtKit\PasswordVerify\PasswordVerify;
 use Tester\Assert;
 use Tester\TestCase;
+use Throwable;
 
 require_once __DIR__ . '/../bootstrap.php';
 
 final class PasswordVerifyTest extends TestCase
 {
-    public function testShortPassword(): void
+    public function testShortPassword(): ?Throwable
     {
         $combination = new NotVerifyInitialLetterCombination();
 
-        Assert::exception(static function () use ($combination) {
+        return Assert::exception(static function () use ($combination): void {
             $combination->setPassword('.');
         }, ShortTextException::class);
     }
