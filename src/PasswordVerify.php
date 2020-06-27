@@ -51,6 +51,12 @@ final class PasswordVerify
     public function verify(callable $verify): bool
     {
         foreach ($this->getAllowableValues() as $combination) {
+            $result = $verify($combination);
+
+            if (!is_bool($result)) {
+                throw new \TypeError('Return value of callback must be of the type bool, ' . gettype($result) . ' returned');
+            }
+
             if ($verify($combination) === true) {
                 return true;
             }
