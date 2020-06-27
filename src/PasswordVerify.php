@@ -4,6 +4,7 @@ namespace ExtKit\PasswordVerify;
 
 use ExtKit\PasswordVerify\Combination;
 use ExtKit\PasswordVerify\Exceptions\RuntimeException;
+use TypeError;
 use function array_merge;
 use function gettype;
 use function is_bool;
