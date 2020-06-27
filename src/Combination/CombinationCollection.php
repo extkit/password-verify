@@ -2,9 +2,12 @@
 
 namespace ExtKit\PasswordVerify\Combination;
 
-final class CombinationCollection implements \Countable, \Iterator
+use Countable;
+use Iterator;
+
+final class CombinationCollection implements Countable, Iterator
 {
-    /** @var Combination[] */
+    /** @var array<Combination> */
     private $values = [];
 
     /** @var int */
@@ -24,7 +27,7 @@ final class CombinationCollection implements \Countable, \Iterator
     /**
      * Creates values that can be accepted within the entered password
      *
-     * @return array|string[]
+     * @return array<string>
      */
     public function createAllowableValues(): array
     {

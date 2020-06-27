@@ -30,6 +30,8 @@ final class NotVerifyInitialLetterCombination implements Combination
     {
         $firstLetter = mb_substr($this->password, 0, 1);
 
-        return ctype_upper($firstLetter) ? lcfirst($this->password) : ucfirst($this->password);
+        return ctype_upper($firstLetter) ?
+            lcfirst($this->password) :
+            ucfirst($this->password);
     }
 }

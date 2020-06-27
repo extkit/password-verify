@@ -2,6 +2,8 @@
 
 namespace ExtKit\PasswordVerify\Exceptions;
 
+use function mb_strlen;
+
 final class ShortTextException extends RuntimeException
 {
     public function __construct(string $text, int $minimumLength)

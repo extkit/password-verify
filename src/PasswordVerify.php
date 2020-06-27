@@ -4,6 +4,9 @@ namespace ExtKit\PasswordVerify;
 
 use ExtKit\PasswordVerify\Combination;
 use ExtKit\PasswordVerify\Exceptions\RuntimeException;
+use function array_merge;
+use function gettype;
+use function is_bool;
 
 final class PasswordVerify
 {
@@ -43,6 +46,9 @@ final class PasswordVerify
         $this->collection->reset();
     }
 
+    /**
+     * @return array<string>
+     */
     public function getAllowableValues(): array
     {
         return array_merge([$this->password], $this->collection->createAllowableValues());
@@ -54,10 +60,10 @@ final class PasswordVerify
             $result = $verify($combination);
 
             if (!is_bool($result)) {
-                throw new \TypeError('Return value of callback must be of the type bool, ' . gettype($result) . ' returned');
+                throw new TypeError('Return value of callback must be of the type bool, ' . gettype($result) . ' returned');
             }
 
-            if ($verify($combination) === true) {
+            if ($verify($combination)) {
                 return true;
             }
         }

@@ -3,6 +3,8 @@
 namespace ExtKit\PasswordVerify\Combination;
 
 use ExtKit\PasswordVerify\Exceptions\ShortTextException;
+use function mb_strlen;
+use function mb_substr;
 
 final class TryDeleteLastLetterCombination implements Combination
 {
@@ -30,5 +32,4 @@ final class TryDeleteLastLetterCombination implements Combination
     {
         return mb_substr($this->password, 0, -1);
     }
-
 }
