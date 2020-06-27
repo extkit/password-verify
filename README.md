@@ -20,3 +20,7 @@ composer require extkit/password-verify
 ## Documentation
 
 - [Usage](.docs/README.md#usage)
+- [Default settings](.docs/README.md#default-settings)
+- [Custom combinations](.docs/README.md#custom-combinations)
+- [Verify valid passwords](.docs/README.md#verify-valid-passwords)
+- [Sample code](.docs/README.md#sample-code)
