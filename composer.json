@@ -1,9 +1,9 @@
 {
-    "name": "extkit/TODO",
-    "description": "TODO",
+    "name": "extkit/password-verify",
+    "description": "Password verification according to predefined criteria",
     "license": "MIT",
     "keywords": [
-        "TODO"
+        "Password verify"
     ],
     "type": "library",
     "authors": [
@@ -16,11 +16,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Vendor\\Package": "src"
+            "ExtKit\\PasswordVerify\\": "src/"
         }
     },
     "require": {
-        "php": ">=7.1"
+        "php": "^7.2",
+        "ext-ctype": "*"
     },
     "require-dev": {
         "nette/tester": "^2.0",
@@ -31,9 +32,6 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "platform": {
-            "php": "7.1"
-        },
         "sort-packages": true
     },
     "extra": {
