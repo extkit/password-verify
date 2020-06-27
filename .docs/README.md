@@ -8,7 +8,7 @@ For basic use, you must first create an instance of the class `ExtKit\PasswordVe
 $verify = new ExtKit\PasswordVerify\PasswordVerify('test');
 ```
 
-### Default settings
+## Default settings
 
 If you do not want to set the combinations manually, it is possible to use pre-prepared ones.
 
@@ -23,7 +23,7 @@ When the input password `Test.` formed following combination:
 
 You can set predefined combinations using the method `$verify->setDefaultCombinations()`
 
-### Custom combinations
+## Custom combinations
 
 To create your own combination, you must implement an interface `ExtKit\PasswordVerify\Combination\Combination` which contains the `setPassword (string $password)` method for setting the password and the `__toString(): string` method for creating the resulting text.
 
@@ -32,7 +32,7 @@ To work with custom combinations of these methods are designed:
 - `addCombination(Combination\Combination $combination, bool $skipException = false)`
 - `deleteAllCombinations()`
 
-### Verify valid passwords
+## Verify valid passwords
 
 To display the allowable generated passwords can be used as follows `getAllowableValues(): string[]`
 
@@ -40,7 +40,7 @@ If you are only interested in whether the password has passed the combination, t
 
 The callback is used to implement a custom authentication method. The return type must be bool. Otherwise, a exception is thrown.
 
-### Sample code
+## Sample code
 
 ```php
 // Hash is test
