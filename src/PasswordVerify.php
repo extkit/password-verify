@@ -2,57 +2,60 @@
 
 namespace ExtKit\PasswordVerify;
 
+use ExtKit\PasswordVerify\Combination;
+use ExtKit\PasswordVerify\Exceptions\RuntimeException;
+
 final class PasswordVerify
 {
     /** @var string */
     private $password;
 
-    /** @var bool */
-    private $notVerifyCaseInitialLetter = false;
-
-    /** @var bool */
-    private $tryDeleteLastLetter = false;
+    /** @var Combination\CombinationCollection */
+    private $collection;
 
     public function __construct(string $password)
     {
         $this->password = $password;
+        $this->collection = new Combination\CombinationCollection();
     }
 
-    public function notVerifyCaseInitialLetter(bool $value = true): void
+    public function setDefaultCombinations(): void
     {
-        $this->notVerifyCaseInitialLetter = $value;
+        $this->deleteAllCombinations();
+        $this->addCombination(new Combination\NotVerifyInitialLetterCombination(), true);
+        $this->addCombination(new Combination\TryDeleteLastLetterCombination(), true);
     }
 
-    public function tryDeleteLastLetter(bool $value = true): void
+    public function addCombination(Combination\Combination $combination, bool $skipException = false): void
     {
-        $this->tryDeleteLastLetter = $value;
+        try {
+            $combination->setPassword($this->password);
+            $this->collection->add($combination);
+        } catch (RuntimeException $exception) {
+            if (!$skipException) {
+                throw $exception;
+            }
+        }
+    }
+
+    public function deleteAllCombinations(): void
+    {
+        $this->collection->reset();
+    }
+
+    public function getAllowableValues(): array
+    {
+        return array_merge([$this->password], $this->collection->createAllowableValues());
     }
 
     public function verify(callable $verify): bool
     {
-        foreach ($this->createCombinations() as $combination) {
+        foreach ($this->getAllowableValues() as $combination) {
             if ($verify($combination) === true) {
                 return true;
             }
         }
 
         return false;
-    }
-
-    private function createCombinations(): array
-    {
-        $combinations = [$this->password];
-
-        if ($this->notVerifyCaseInitialLetter && mb_strlen($this->password) > 1) {
-            $firstLetter = mb_substr($this->password, 0, 1);
-            $result = ctype_upper($firstLetter) ? lcfirst($this->password) : ucfirst($this->password);
-            $combinations[] = $result;
-        }
-
-        if ($this->tryDeleteLastLetter && mb_strlen($this->password) > 1) {
-            $combinations[] = mb_substr($this->password, 0, -1);
-        }
-
-        return $combinations;
     }
 }
