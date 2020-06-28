@@ -3,11 +3,11 @@
 The library creates valid password types, which can then be validated.
 Inside the library, some types are already included or it is possible to create your own.
 
-[![Build Status](https://travis-ci.org/%COMPOSER_PACKAGE%.svg?branch=master)](https://travis-ci.org/%COMPOSER_PACKAGE%)
-[![Coverage Status](https://coveralls.io/repos/github/%COMPOSER_PACKAGE%/badge.svg?branch=master)](https://coveralls.io/github/%COMPOSER_PACKAGE%?branch=master)
-[![Monthly Downloads](https://poser.pugx.org/%COMPOSER_PACKAGE%/d/monthly)](https://packagist.org/packages/%COMPOSER_PACKAGE%)
-[![Latest Stable Version](https://poser.pugx.org/%COMPOSER_PACKAGE%/v/stable)](https://github.com/%COMPOSER_PACKAGE%/releases)
-[![GitHub license](https://img.shields.io/github/license/%COMPOSER_PACKAGE%)](https://github.com/%COMPOSER_PACKAGE%/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/extkit/password-verify.svg?branch=master)](https://travis-ci.org/extkit/password-verify)
+[![Coverage Status](https://coveralls.io/repos/github/extkit/password-verify/badge.svg?branch=master)](https://coveralls.io/github/extkit/password-verify?branch=master)
+[![Monthly Downloads](https://poser.pugx.org/extkit/password-verify/d/monthly)](https://packagist.org/packages/extkit/password-verify)
+[![Latest Stable Version](https://poser.pugx.org/extkit/password-verify/v/stable)](https://github.com/extkit/password-verify/releases)
+[![GitHub license](https://img.shields.io/github/license/extkit/password-verify)](https://github.com/extkit/password-verify/blob/master/LICENSE)
 
 If the library is useful, **[please make a donation now](https://filipsedivy.cz/donation?to=extkit%2Fpassword-verify)**. Thank you!
 
