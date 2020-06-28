@@ -47,9 +47,7 @@ jobs:
         - php coveralls.phar --verbose --config ./tests/.coveralls.yml
 
   allow_failures:
-    - stage: Static Analysis
     - stage: Code Coverage
-    - stage: Code Sniffer
 
 notifications:
   email: false
