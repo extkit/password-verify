@@ -55,7 +55,7 @@ final class PasswordVerifyTest extends TestCase
         Assert::true($result);
 
         $result = $verify->verify(static function (string $value): bool {
-            return md5($value) === '...';
+            return '...' === md5($value);
         });
 
         Assert::false($result);
